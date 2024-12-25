@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Служа пересилання товарів</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="home_page.html">Служба пересилання товарів</a></h1>
+        </header>
+        <nav>
+            <div class="nav-item">
+                <a href="index.html">Відправити</a>
+                <div class="submenu">
+                    <a href="#">Відправити з відділення</a>
+                    <a href="#">Відправити з поштомата</a>
+                    <a href="#">Відправити з адреси</a>
+                    <a href="#">Міжнародна доставка</a>
+                    </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">Отримати</a>
+                <div class="submenu">
+                    <a href="#">Отримати у відділенні</a>
+                    <a href="#">Отримати в поштоматі</a>
+                    <a href="#">Отримати за адресою</a>
+                    </div>
+            </div>
+            <div class="nav-item">
+                <a href="search_page.html">Відстежити</a>
+                <div class="submenu">
+                    <a href="#">Посилку (0-12) кг</a>
+                    <a href="#">Посилку (12+) кг</a>
+                    <a href="#">Лист</a>
+                    <a href="#">Інше</a>
+                    </div>
+            </div>
+        </nav>
+        <div class="card" id="search">
+            <h3>Пошук посилок</h3>
+            <div class="form-group">
+            <label for="searchTerm">Пошук за одержувачем:</label>
+            <input type="text" id="searchTerm" placeholder="Введіть ім'я одержувача">
+        </div>
+        <button id="searchBtn" class="btn">Шукати</button>
+
+        <table id="parcelTable">
+            <thead>
+                <tr>
+                    <th>Відправник</th>
+                    <th>Одержувач</th>
+                    <th>Вага</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+        <h3><a>Відправити</a></h3>
+        <ul>
+            <li><a href="#">Відправити з відділення</a></li>
+            <li><a href="#">Відправити з поштомата</a></li>
+            <li><a href="#">Відправити з адреси</a></li>
+            <li><a href="#">Міжнародна доставка</a></li>
+        </ul>
+        </div>
+        <div class="footer-column">
+        <h3><a>Отримати</a></h3>
+        <ul>
+            <li><a href="#">Отримати у відділенні</a></li>
+            <li><a href="#">Отримати в поштоматі</a></li>
+            <li><a href="#">Отримати за адресою</a></li>
+            <li><a href="#">Доставка з інтернет-магазинів</a></li>
+        </ul>
+        </div>
+        <div class="footer-column">
+        <h3><a>Відстежити</a></h3>
+        <ul>
+            <li><a href="#">Посилку (0-12) кг</a></li>
+            <li><a href="#">Посилку (12+) кг</a></li>
+            <li><a href="#">Лист</a></li>
+            <li><a href="#">Інше</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+        <h3><a>Інформація</a></h3>
+        <ul>
+            <li><a href="#">Про компанію</a></li>
+            <li><a href="#">Новини</a></li>
+            <li><a href="#">Контакти</a></li>
+        </ul>
+        </div>
+    </div>
+    </footer>
+    <script>
+        let parcels = JSON.parse(localStorage.getItem('parcels')) || [];
+const tableBody = document.getElementById('parcelTable').querySelector('tbody');
+const searchInput = document.getElementById('searchTerm');
+const searchButton = document.getElementById('searchBtn');
+
+function displayParcels(filteredParcels = parcels) { // Приймаємо фільтрований масив як аргумент
+    tableBody.innerHTML = ''; // Очищаємо таблицю перед відображенням
+
+    if (filteredParcels.length === 0) {
+        const row = tableBody.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 5; // Розтягуємо комірку на всі стовпці
+        cell.textContent = "Посилок не знайдено.";
+        return; // Виходимо з функції, якщо немає результатів
+    }
+
+    filteredParcels.forEach(parcel => {
+        const row = tableBody.insertRow();
+        const senderCell = row.insertCell();
+        const recipientCell = row.insertCell();
+        const weightCell = row.insertCell();
+        const typeCell = row.insertCell();
+        const statusCell = row.insertCell();
+
+        senderCell.textContent = parcel.sender;
+        recipientCell.textContent = parcel.recipient;
+        weightCell.textContent = parcel.weight + ' кг';
+        typeCell.textContent = parcel.type;
+        statusCell.textContent = parcel.status;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', displayParcels); // Відображаємо всі посилки при завантаженні сторінки
+
+searchButton.addEventListener('click', function() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredParcels = parcels.filter(parcel =>
+        parcel.recipient.toLowerCase().includes(searchTerm)
+    );
+    displayParcels(filteredParcels); // Передаємо відфільтрований масив у функцію відображення
+});
+
+// Додатково: фільтрація при введенні тексту (за бажанням)
+searchInput.addEventListener('input', function() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredParcels = parcels.filter(parcel =>
+        parcel.recipient.toLowerCase().includes(searchTerm)
+    );
+    displayParcels(filteredParcels);
+});
+    </script>
+</body>

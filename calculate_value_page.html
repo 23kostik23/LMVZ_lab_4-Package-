@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Служа пересилання товарів</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.route, .package-type, .package-details, .services {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+}
+#packing-tariffs-list{
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="home_page.html">Служба пересилання товарів</a></h1>
+        </header>
+        <nav>
+            <div class="nav-item">
+                <a href="index.html">Відправити</a>
+                <div class="submenu">
+                    <a href="#">Відправити з відділення</a>
+                    <a href="#">Відправити з поштомата</a>
+                    <a href="#">Відправити з адреси</a>
+                    <a href="#">Міжнародна доставка</a>
+                    </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">Отримати</a>
+                <div class="submenu">
+                    <a href="#">Отримати у відділенні</a>
+                    <a href="#">Отримати в поштоматі</a>
+                    <a href="#">Отримати за адресою</a>
+                    </div>
+            </div>
+            <div class="nav-item">
+                <a href="search_page.html">Відстежити</a>
+                <div class="submenu">
+                    <a href="#">Посилку (0-12) кг</a>
+                    <a href="#">Посилку (12+) кг</a>
+                    <a href="#">Лист</a>
+                    <a href="#">Інше</a>
+                    </div>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>Розрахунок вартості доставки</h1>
+            <div class="calculator">
+                <div class="route">
+                    <label for="city-from">Місто відправлення:</label>
+                    <select id="city-from">
+                        <option value="kyiv">Київ</option>
+                        <option value="lviv">Львів</option>
+                        <option value="odesa">Одеса</option>
+                        <option value="kharkiv">Харків</option>
+                        <option value="dnipro">Дніпро</option>
+                        <option value="donetsk">Донецьк</option>
+                        <option value="zaporizhzhia">Запоріжжя</option>
+                        <option value="kryvyi-rih">Кривий Ріг</option>
+                        <option value="mykolaiv">Миколаїв</option>
+                        <option value="mariupol">Маріуполь</option>
+                    </select>
+    
+                    <label for="city-to">Місто призначення:</label>
+                    <select id="city-to">
+                        <option value="kyiv">Київ</option>
+                        <option value="lviv">Львів</option>
+                        <option value="odesa">Одеса</option>
+                        <option value="kharkiv">Харків</option>
+                        <option value="dnipro">Дніпро</option>
+                        <option value="donetsk">Донецьк</option>
+                        <option value="zaporizhzhia">Запоріжжя</option>
+                        <option value="kryvyi-rih">Кривий Ріг</option>
+                        <option value="mykolaiv">Миколаїв</option>
+                        <option value="mariupol">Маріуполь</option>
+                    </select>
+                </div>
+    
+                <div class="package-type">
+                    <label for="package-type">Вид відправлення:</label>
+                    <select id="package-type">
+                        <option value="parcel">Посилка</option>
+                        <option value="document">Документ</option>
+                        <option value="cargo">Вантаж</option>
+                    </select>
+                </div>
+    
+                <div class="package-details">
+                    <label for="weight">Вага (кг):</label>
+                    <input type="number" id="weight" min="0" value="1">
+                    <label for="length">Довжина (см):</label>
+                    <input type="number" id="length" min="0" value="10">
+                    <label for="width">Ширина (см):</label>
+                    <input type="number" id="width" min="0" value="10">
+                    <label for="height">Висота (см):</label>
+                    <input type="number" id="height" min="0" value="10">
+                    <label for="declared-value">Оголошена вартість (грн):</label>
+                    <input type="number" id="declared-value" min="0" value="0">
+                </div>
+    
+                <div class="services">
+                    <label><input type="checkbox" id="packing"> Упаковка</label>
+                    <label><input type="checkbox" id="floor-delivery"> Підйом на поверх</label>
+                    <label for="floor">Кількість поверхів:</label>
+                    <input type="number" id="floor" min="1" value="1" disabled>
+                    <label><input type="checkbox" id="reverse-delivery"> Зворотна доставка</label>
+                </div>
+    
+                <button id="calculate">Розрахувати вартість</button>
+                <div id="result"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3><a>Відправити</a></h3>
+            <ul>
+              <li><a href="#">Відправити з відділення</a></li>
+              <li><a href="#">Відправити з поштомата</a></li>
+              <li><a href="#">Відправити з адреси</a></li>
+              <li><a href="#">Міжнародна доставка</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3><a>Отримати</a></h3>
+            <ul>
+              <li><a href="#">Отримати у відділенні</a></li>
+              <li><a href="#">Отримати в поштоматі</a></li>
+              <li><a href="#">Отримати за адресою</a></li>
+              <li><a href="#">Доставка з інтернет-магазинів</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3><a>Відстежити</a></h3>
+            <ul>
+                <li><a href="#">Посилку (0-12) кг</a></li>
+                <li><a href="#">Посилку (12+) кг</a></li>
+                <li><a href="#">Лист</a></li>
+                <li><a href="#">Інше</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+            <h3><a>Інформація</a></h3>
+            <ul>
+              <li><a href="#">Про компанію</a></li>
+              <li><a href="#">Новини</a></li>
+              <li><a href="#">Контакти</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    <script src="script.js"></script>
+</body>
+</html>

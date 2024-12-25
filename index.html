@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Служа пересилання товарів</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="home_page.html">Служба пересилання товарів</a></h1>
+        </header>
+        <nav>
+            <div class="nav-item">
+                <a href="index.html">Відправити</a>
+                <div class="submenu">
+                    <a href="#">Відправити з відділення</a>
+                    <a href="#">Відправити з поштомата</a>
+                    <a href="#">Відправити з адреси</a>
+                    <a href="#">Міжнародна доставка</a>
+                    </div>
+            </div>
+            <div class="nav-item">
+                <a href="#">Отримати</a>
+                <div class="submenu">
+                    <a href="#">Отримати у відділенні</a>
+                    <a href="#">Отримати в поштоматі</a>
+                    <a href="#">Отримати за адресою</a>
+                    </div>
+            </div>
+            <div class="nav-item">
+                <a href="search_page.html">Відстежити</a>
+                <div class="submenu">
+                    <a href="#">Посилку (0-12) кг</a>
+                    <a href="#">Посилку (12+) кг</a>
+                    <a href="#">Лист</a>
+                    <a href="#">Інше</a>
+                    </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="card" id="add">
+                <h3>Додати нову посилку</h3>
+                <form id="addParcelForm">
+                    <div class="form-group">
+                        <label for="sender">Відправник:</label>
+                        <input type="text" id="sender" name="sender" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient">Одержувач:</label>
+                        <input type="text" id="recipient" name="recipient" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Вага (кг):</label>
+                        <input type="number" id="weight" name="weight" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Тип</label>
+                        <select id="type" name="type" required>
+                            <option value="">Оберіть тип</option>
+                            <option value="Посилка (0-12) кг">Посилка (0-12) кг</option>
+                            <option value="Посика (12+) кг">Посилка (12+) кг</option>
+                            <option value="Лист">Лист</option>
+                            <option value="Інше">Інше</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Статус:</label>
+                        <select id="status" name="status" required>
+                            <option value="">Оберіть статус</option>
+                            <option value="Очікує відправлення">Очікує відправлення</option>
+                            <option value="У дорозі">У дорозі</option>
+                            <option value="Доставлено">Доставлено</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Відправити посилку</button>
+                </form>
+            </div>
+
+
+                </table>
+            </div>
+        </div>
+        <table id="parcelTable">
+            <thead>
+                <tr>
+                    <th>Відправник</th>
+                    <th>Одержувач</th>
+                    <th>Вага</th>
+                    <th>Тип</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3><a>Відправити</a></h3>
+            <ul>
+              <li><a href="#">Відправити з відділення</a></li>
+              <li><a href="#">Відправити з поштомата</a></li>
+              <li><a href="#">Відправити з адреси</a></li>
+              <li><a href="#">Міжнародна доставка</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3><a>Отримати</a></h3>
+            <ul>
+              <li><a href="#">Отримати у відділенні</a></li>
+              <li><a href="#">Отримати в поштоматі</a></li>
+              <li><a href="#">Отримати за адресою</a></li>
+              <li><a href="#">Доставка з інтернет-магазинів</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3><a>Відстежити</a></h3>
+            <ul>
+                <li><a href="#">Посилку (0-12) кг</a></li>
+                <li><a href="#">Посилку (12+) кг</a></li>
+                <li><a href="#">Лист</a></li>
+                <li><a href="#">Інше</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+            <h3><a>Інформація</a></h3>
+            <ul>
+              <li><a href="#">Про компанію</a></li>
+              <li><a href="#">Новини</a></li>
+              <li><a href="#">Контакти</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+header {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+header h1 a {
+    text-decoration: none;
+    color: #f5f5f5;
+}
+nav {
+    display: flex; 
+    justify-content: space-around; 
+    background-color: #f0f0f0; 
+    padding: 10px;
+}
+
+.nav-item {
+    position: relative; 
+}
+
+.nav-item a {
+    display: block; 
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.submenu {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 200px; 
+    z-index: 10; 
+}
+
+.submenu a {
+    padding: 8px 15px; 
+    white-space: nowrap;
+}
+
+.nav-item:hover .submenu {
+    display: block; 
+}
+
+.submenu a:hover {
+    background-color: #eee; 
+}
+.container {
+    padding: 2rem;
+}
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+.card h3 {
+    margin: 0 0 1rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn {
+    background-color: #2a9d8f;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #21867a;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+}
+th {
+    background-color: #2a9d8f;
+}
+main {
+    min-height: 70vh;
+    flex-grow: 1; 
+  }
+
+/* Стилі для hero section */
+.hero {
+    background-color: #fff;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hero h2 {
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Стилі для services section */
+.services {
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Адаптивна сітка */
+    grid-gap: 20px;
+}
+
+.service {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.service img {
+    margin-bottom: 10px;
+    max-height: 100px; /* Обмежуємо висоту зображень */
+}
+
+/* Стилі для advantages section */
+.advantages {
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.advantages ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* Стилі для testimonials section */
+.testimonials {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial {
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.testimonial .author {
+    font-style: italic;
+    text-align: right;
+    margin-top: 10px;
+}
+footer {
+background-color: #e5e5e5; 
+padding: 20px 0; 
+font-family: sans-serif; 
+}
+
+.footer-container {
+display: flex; 
+justify-content: space-around;
+max-width: 1200px; 
+margin: 0 auto; 
+}
+  
+.footer-column {
+width: 25%; 
+}
+
+.footer-column h3 a {
+font-size: 16px;
+font-weight: bold;
+margin-bottom: 10px;
+color: #2a9d8f; 
+}
+
+.footer-column ul {
+list-style: none; 
+padding: 0;
+margin: 0;
+}
+
+.footer-column li {
+margin-bottom: 5px;
+}
+
+.footer-column a {
+text-decoration: none; 
+color: #666; 
+transition: color 0.3s ease; 
+}
+
+.footer-column a:hover {
+color: #007bff; 
+}
+
+
+@media (max-width: 768px) {
+.footer-container {
+    flex-direction: column; 
+    align-items: center; 
+}
+.footer-column {
+    width: 80%; 
+    margin-bottom: 20px;
+    text-align: center; 
+}
+}
